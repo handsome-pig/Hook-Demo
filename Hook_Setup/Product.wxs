@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*"
+           Name="Hook_Setup"
+           Language="1033"
+           Version="1.0.0.0"
+           Manufacturer="Ziv"
+           UpgradeCode="7b06a67d-dc87-4c1b-b875-00dbeac20675">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate />
+
+    <Feature Id="ProductFeature" Title="Hook Demo" Level="1">
+      <ComponentGroupRef Id="HookGroup" />
+    </Feature>
+
+    <UI>
+      <Property Id="WIXUI_INSTALLDIR" Value="Hook_Root"/>
+      <UIRef Id="WixUI_InstallDir"/>
+    </UI>
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="Hook_Root" Name="Test_Hook">
+          <Directory Id="Test_Hook" Name="HookDemo"/>
+        </Directory>
+      </Directory>
+    </Directory>
+  </Fragment>
+
+  <!--要在应用程序中安装的所有文件 heat.exe生成-->
+  <Fragment>
+    <DirectoryRef Id="Test_Hook">
+      <Directory Id="dir0B0F9EFD23C37A5B1ACAE1500848619A" Name="bin" />
+      <Directory Id="dirEE1CAD950F5D718EB637174B3BC413D3" Name="obj" />
+      <Directory Id="dir2CD7564DDEF1A9595CC957EC9F5218B9" Name="Properties" />
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="HookGroup">
+      <Component Id="cmpD36297957B84A9AC9A691A441005F8ED" Directory="Test_Hook" Guid="9BD018EB-FBCA-4E1D-A376-9CBBBAC2304A">
+        <File Id="fil7A606A452A88756D2224C01A42B70456" KeyPath="yes" Source="$(var.Dir)\App.config" />
+      </Component>
+      <Component Id="cmp67F5163F5043EC47F546B2D76C0B5B4D" Directory="Test_Hook" Guid="B2C21C3D-50F2-4AD5-8B75-D047448DA907">
+        <File Id="fil65F87C5BED8D23DA66ECA4E8BA91705E" KeyPath="yes" Source="$(var.Dir)\App.xaml" />
+      </Component>
+      <Component Id="cmpCF37E720071F54CFF5BEA1A03E30667E" Directory="Test_Hook" Guid="97200309-DD11-4C1B-BDA3-4C6E2F202ED4">
+        <File Id="filDD26DBB2A7C1352058E689239E4886DF" KeyPath="yes" Source="$(var.Dir)\App.xaml.cs" />
+      </Component>
+      <Component Id="cmpBC6795A85C1053B0B3D846FA2D836C81" Directory="Test_Hook" Guid="02DF8263-9FD7-4306-987D-803CAE2B225A">
+        <File Id="fil743903FE9DFDF9765FFAE016F94E1238" KeyPath="yes" Source="$(var.Dir)\Downloads.ico" />
+      </Component>
+      <Component Id="cmp61B0142D5E08B77499BFCAAA99A11756" Directory="Test_Hook" Guid="15C97E1A-9AB9-45E9-9A3A-D8C1841C87D2">
+        <File Id="fil7148535CD443B654474F51C66C8E064C" KeyPath="yes" Source="$(var.Dir)\KeyboardHook.cs" />
+      </Component>
+      <Component Id="cmp74CB1AA6927520E95DE8408B51AE807B" Directory="Test_Hook" Guid="29CC46BB-0590-4D2A-812A-D7646EEA945F">
+        <File Id="filC346660BB84236CB27A2F4DDE3CB3E3B" KeyPath="yes" Source="$(var.Dir)\MainWindow.xaml" />
+      </Component>
+      <Component Id="cmp4D8148D256B89B362D1A1CFCDABA5837" Directory="Test_Hook" Guid="CC21560D-F134-4322-8567-77CEC73E96F9">
+        <File Id="fil6064AA2D6EDFB46976393125A3DD4C43" KeyPath="yes" Source="$(var.Dir)\MainWindow.xaml.cs" />
+      </Component>
+      <Component Id="cmpE18A67FAE4B7707A8D7B5F8CA7E6FBE6" Directory="Test_Hook" Guid="99F241F7-4923-4392-B5F7-18F235FB9E75">
+        <File Id="filF4FCDDF7952B1674FD3413990F84335D" KeyPath="yes" Source="$(var.Dir)\MouseHook.cs" />
+      </Component>
+      <Component Id="cmp8660E8B9E85FDC7CBC02B6B2AC8FD25A" Directory="Test_Hook" Guid="61E957A6-5414-4B23-93CC-F5AFBF285531">
+        <File Id="fil1781D30849355DF9B0CF9990AE4FEE80" KeyPath="yes" Source="$(var.Dir)\Test_Hook.csproj" />
+      </Component>
+      <Component Id="cmpACC321A459F7A180224DCC308FF5C6D1" Directory="Test_Hook" Guid="B837753E-D923-483D-918A-4E50BC477087">
+        <File Id="fil58256C9B05A2A8F06F632A8E00FCAA10" KeyPath="yes" Source="$(var.Dir)\Test_Hook.csproj.user" />
+      </Component>
+      <Component Id="cmp9221EF0A391275666F71BA36538ACBAB" Directory="Test_Hook" Guid="5405C610-30F6-4B35-B78B-36CE0021CF13">
+        <File Id="fil37929B6576FE78507F98B26CDC4ACC21" KeyPath="yes" Source="$(var.Dir)\Win32API.cs" />
+      </Component>
+      <Component Id="cmp0F03373BE87387A2A904AC1C99963BA7" Directory="dir055D7B18CFD794FA918B0AE37D18175B" Guid="A356E12F-ADC9-404C-B23E-4C3EC1E17749">
+        <File Id="fil0B77CA91218E6E9639BDC9A36BFE92BC" KeyPath="yes" Source="$(var.Dir)\bin\Debug\Test_Hook.exe" />
+      </Component>
+      <Component Id="cmpC2471ECC765D4C63D7883C988866BF0F" Directory="dir055D7B18CFD794FA918B0AE37D18175B" Guid="94FAD196-C069-4B9D-BD6D-64DE4D687924">
+        <File Id="fil46113F736A0B64456520021FA4E3640C" KeyPath="yes" Source="$(var.Dir)\bin\Debug\Test_Hook.exe.config" />
+      </Component>
+      <Component Id="cmp2E2FA409D2FCF1076B05AE5915172C78" Directory="dir055D7B18CFD794FA918B0AE37D18175B" Guid="C8F90F74-B234-44B7-90DB-A7E4EBA31D9B">
+        <File Id="fil056066E688AB212C136D4DA863255700" KeyPath="yes" Source="$(var.Dir)\bin\Debug\Test_Hook.pdb" />
+      </Component>
+      <Component Id="cmpBBED814FAA8C4CAE378B92207C4642F4" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="EECC7181-6AE9-44EF-B2E3-ED75DA86A1EC">
+        <File Id="fil5C317A76561E7EA341F16FB5DB3F1E2C" KeyPath="yes" Source="$(var.Dir)\obj\Debug\.NETFramework,Version=v4.6.1.AssemblyAttributes.cs" />
+      </Component>
+      <Component Id="cmp00DF6FFEDA6013931CAB6DB0B540B084" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="A9D35248-92DF-4479-A6C2-FD863CAB0149">
+        <File Id="fil86D3DA578BA6C305E775FE771D10F6C9" KeyPath="yes" Source="$(var.Dir)\obj\Debug\App.g.cs" />
+      </Component>
+      <Component Id="cmp278D65D3C91BD695330534896DD9AB50" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="12170E1D-F668-4FB7-92F5-B22177DE5DF0">
+        <File Id="fil94891556DDA80FC7560FBBD566E8904F" KeyPath="yes" Source="$(var.Dir)\obj\Debug\App.g.i.cs" />
+      </Component>
+      <Component Id="cmp11D41D082877810DA1767B448A7C4600" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="B702C895-6BF7-43B4-AB3F-5A5D3F826534">
+        <File Id="fil95FAEA04FEC2A65753BF4D00283C5CD4" KeyPath="yes" Source="$(var.Dir)\obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+      </Component>
+      <Component Id="cmpF0F911427EBD15EA18BC5FA49A66CBA6" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="1FA7F589-AE8B-4E3B-8CAF-85047FEDD81A">
+        <File Id="fil0DD5FC9E53C16D21908F5D81C099D8A7" KeyPath="yes" Source="$(var.Dir)\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+      </Component>
+      <Component Id="cmp9025F09934D3FFA7FEA35A50741B7192" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="9D60F2CC-B5F1-4AEB-8E65-AFD337856936">
+        <File Id="fil4EFD70AFF1EB7D0AEDE46000A117DD84" KeyPath="yes" Source="$(var.Dir)\obj\Debug\MainWindow.baml" />
+      </Component>
+      <Component Id="cmp3A29665DE6E2D5948E5ACE6F53B9FF01" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="98E75E3C-1962-4074-BE59-2519E836704F">
+        <File Id="fil45942CFB8530C8A64B8305613DFDA6A7" KeyPath="yes" Source="$(var.Dir)\obj\Debug\MainWindow.g.cs" />
+      </Component>
+      <Component Id="cmpB6DB36EC7879324AEC0BDA23CEB411B4" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="E5A4CC84-CF74-446C-8E2F-CB2C39BC1017">
+        <File Id="fil2B4A0A41F173C1FC620EE4F6AAE9732D" KeyPath="yes" Source="$(var.Dir)\obj\Debug\MainWindow.g.i.cs" />
+      </Component>
+      <Component Id="cmp2EEF2F260A926627DBBFFAC6A4D43780" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="BBA028FA-C7BD-46C4-817E-65561A19A11E">
+        <File Id="filD42FAF434044C1845504989AB576581C" KeyPath="yes" Source="$(var.Dir)\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+      </Component>
+      <Component Id="cmpCF31DC91DE7614199EA5C464A08A57DA" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="2874D320-F098-497C-B4CC-7D540255C624">
+        <File Id="filFA636B2E561195CB3DEDAFD2AE809262" KeyPath="yes" Source="$(var.Dir)\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+      </Component>
+      <Component Id="cmp058EF9C4E89283C05E45AD6E480C36E1" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="91838DDC-375D-422E-88D1-2BD6E27FE8AB">
+        <File Id="fil3FEE65AAA47F31597554C194FE384C6F" KeyPath="yes" Source="$(var.Dir)\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+      </Component>
+      <Component Id="cmp0189877BF83D9B9300CFB241BF43DAD9" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="621BF641-C5E8-4004-AE47-9E994059D29C">
+        <File Id="fil262EA713B58D9EDED417C804664682EA" KeyPath="yes" Source="$(var.Dir)\obj\Debug\Test_Hook.csproj.AssemblyReference.cache" />
+      </Component>
+      <Component Id="cmp85C3AC81312C1A25C269427E8583BFC3" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="9AC7887E-3F04-4101-B819-64901ABE99AB">
+        <File Id="filD632E1418F6CEE6A022E7DB26475CB54" KeyPath="yes" Source="$(var.Dir)\obj\Debug\Test_Hook.csproj.CoreCompileInputs.cache" />
+      </Component>
+      <Component Id="cmpCDE9D03F6B8EB9E064FA1CB8B7F6C471" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="BD0A59BF-71E9-44A8-9034-3974EBC8F09B">
+        <File Id="fil9763F20D9E9E174778D5B0A496CD3412" KeyPath="yes" Source="$(var.Dir)\obj\Debug\Test_Hook.csproj.FileListAbsolute.txt" />
+      </Component>
+      <Component Id="cmp80B5BCC0D3A985D5961B8F4BDE2572CD" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="F6613ED1-6717-43D1-B1F2-B482A778FE7C">
+        <File Id="fil8D27CCBF0DCDCC259AEA96AD023F43D8" KeyPath="yes" Source="$(var.Dir)\obj\Debug\Test_Hook.csproj.GenerateResource.cache" />
+      </Component>
+      <Component Id="cmp3C0E07A0DF0A9E043B4C12DB35B3107E" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="1433AA72-A9FA-4B9D-8058-30D8AE6F0E47">
+        <File Id="filDD1FDB35485AA9370B3EF551CB9C37CD" KeyPath="yes" Source="$(var.Dir)\obj\Debug\Test_Hook.exe" />
+      </Component>
+      <Component Id="cmp845BFC533B3C7F32920EA8A759E8D935" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="8D390D71-BAA3-472B-81B2-BA75F9D77E26">
+        <File Id="fil2F4EE19531E5C2FF440B6F58618BC84A" KeyPath="yes" Source="$(var.Dir)\obj\Debug\Test_Hook.g.resources" />
+      </Component>
+      <Component Id="cmpB9599769BF6CFF8A77600E3B27698F33" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="B9C962F4-E599-4331-8846-54F06BCA1992">
+        <File Id="filDAE46600F42D57D3A99E74506523F9B1" KeyPath="yes" Source="$(var.Dir)\obj\Debug\Test_Hook.pdb" />
+      </Component>
+      <Component Id="cmp41C97779AB5FD3EEC47AD35FF8F24868" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="53B3DB53-6EB2-43C0-A3F8-DBCE8AB92EDC">
+        <File Id="filECBD45CD9075E785E940F43A516875F5" KeyPath="yes" Source="$(var.Dir)\obj\Debug\Test_Hook.Properties.Resources.resources" />
+      </Component>
+      <Component Id="cmp696C63E78B2DDA0D0126E9DF0A440963" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="D0EB3915-E0F3-4972-AF63-A8B496F52F36">
+        <File Id="fil1538196E1A81A21D3CC512302C2DC3A6" KeyPath="yes" Source="$(var.Dir)\obj\Debug\Test_Hook_Content.g.i.cs" />
+      </Component>
+      <Component Id="cmp05741402A50C4EB3A034C9380C06F337" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="C0F7F81A-03F9-491B-8551-F2EBE235DF37">
+        <File Id="filE864D29810707DAECBA70D031CC03C2F" KeyPath="yes" Source="$(var.Dir)\obj\Debug\Test_Hook_MarkupCompile.cache" />
+      </Component>
+      <Component Id="cmp4B8C0FE81EB269A3EA888F227337607A" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="4013A5F2-D8BE-447C-B336-5602350760F3">
+        <File Id="filEDA9DDC1C6E729CE70C7C9C26357953F" KeyPath="yes" Source="$(var.Dir)\obj\Debug\Test_Hook_MarkupCompile.i.cache" />
+      </Component>
+      <Component Id="cmp6D65B2D0FDDBA0102C613B64DCDBDEB1" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="596C7B0F-0DF1-40FF-AAC4-1B234803C3BF">
+        <File Id="fil778E4EBB3445FC6517DC805040C87973" KeyPath="yes" Source="$(var.Dir)\obj\Debug\Test_Hook_MarkupCompile.i.lref" />
+      </Component>
+      <Component Id="cmp77B207977C37D7D144590638281EC4B2" Directory="dirA02EA5BF33FC038BBE7471933C47A46C" Guid="C67FAC9F-AA80-4602-8ECC-38FDF0F9DF3D">
+        <File Id="filC06B7C7A0A258CA064F4DFF611369AD6" KeyPath="yes" Source="$(var.Dir)\obj\Debug\Test_Hook_MarkupCompile.lref" />
+      </Component>
+      <Component Id="cmp2CDC06C6C0DEFDFD6F04CE2C455F4B32" Directory="dir2CD7564DDEF1A9595CC957EC9F5218B9" Guid="64788AC7-4405-4ABB-8FB9-CC747C7CFEC1">
+        <File Id="filAAAEE927BC1B34596C47AE98588D7B38" KeyPath="yes" Source="$(var.Dir)\Properties\AssemblyInfo.cs" />
+      </Component>
+      <Component Id="cmp6B14CC3CBF649083BAA926CA0C7E807B" Directory="dir2CD7564DDEF1A9595CC957EC9F5218B9" Guid="3D984187-F197-4DA2-B54C-8A2C2EF0A5CA">
+        <File Id="fil78B07417EAF8087FA31E3A57343B20AA" KeyPath="yes" Source="$(var.Dir)\Properties\Resources.Designer.cs" />
+      </Component>
+      <Component Id="cmpF2C29994C966C7B81FF0B607AC31A49B" Directory="dir2CD7564DDEF1A9595CC957EC9F5218B9" Guid="0B7255E9-D7E3-4277-9E29-80C382512C04">
+        <File Id="filF6C3A4814DEB369F95A5C240DAF1FE01" KeyPath="yes" Source="$(var.Dir)\Properties\Resources.resx" />
+      </Component>
+      <Component Id="cmpF25B4AC92E3F1E83689CEE6FA546AF3D" Directory="dir2CD7564DDEF1A9595CC957EC9F5218B9" Guid="33BB7699-D319-4351-ABA8-0BFDCD8C2E1E">
+        <File Id="fil1E7707E49CE2CC85F9702D061017FA27" KeyPath="yes" Source="$(var.Dir)\Properties\Settings.Designer.cs" />
+      </Component>
+      <Component Id="cmp8E61A02B672BA062EA9396FE06886404" Directory="dir2CD7564DDEF1A9595CC957EC9F5218B9" Guid="0091C346-E163-49B3-8CCC-424780DA0C60">
+        <File Id="fil2D9DAF0BCA1FD470B38440B298A02B40" KeyPath="yes" Source="$(var.Dir)\Properties\Settings.settings" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir0B0F9EFD23C37A5B1ACAE1500848619A">
+      <Directory Id="dir055D7B18CFD794FA918B0AE37D18175B" Name="Debug" />
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dirEE1CAD950F5D718EB637174B3BC413D3">
+      <Directory Id="dirA02EA5BF33FC038BBE7471933C47A46C" Name="Debug" />
+    </DirectoryRef>
+  </Fragment>
+</Wix>
